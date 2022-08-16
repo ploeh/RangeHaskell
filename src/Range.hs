@@ -1,7 +1,5 @@
 module Range where
 
-import Control.Applicative (Applicative(liftA2))
-
 data Endpoint a = Open a | Closed a deriving (Eq, Show)
 
 contains :: (Foldable t, Ord a) => (Endpoint a, Endpoint a) -> t a -> Bool
@@ -12,4 +10,5 @@ contains (lowerBound, upperBound) =
       isLowEnough = case upperBound of
         Closed y -> (<= y)
         Open   y ->  (< y)
-  in all (liftA2 (&&) isHighEnough isLowEnough)
+      isContained x = isHighEnough x && isLowEnough x
+  in all isContained
