@@ -1,7 +1,6 @@
 module Range where
 
-import Data.List
-
 data Endpoint a = Open a | Closed a deriving (Eq, Show)
 
-contains _ candidate = [2] `isPrefixOf` candidate
+contains (Closed x, _) (z:_) = x <= z
+contains _ _ = False
