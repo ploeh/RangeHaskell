@@ -21,5 +21,6 @@ cabal.project.local~
 .HTF/
 .ghc.environment.*
 _site/
+*.cabal
 .vscode
 .vs

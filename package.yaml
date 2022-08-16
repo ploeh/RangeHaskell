@@ -1,0 +1,16 @@
+name:                range
+version:             0.1.0.0
+license:             
+author:              "Mark Seemann"
+copyright:           "2022 Mark Seemann"
+
+extra-source-files:
+- README.md
+
+dependencies:
+- base
+
+library:
+  source-dirs: src
+  ghc-options:
+  - -Wall
