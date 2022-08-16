@@ -14,3 +14,16 @@ library:
   source-dirs: src
   ghc-options:
   - -Wall
+
+tests:
+  range-test:
+    main:        Spec.hs
+    source-dirs: test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    - -Wall
+    dependencies:
+    - range
+    - test-framework
