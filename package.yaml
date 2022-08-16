@@ -26,4 +26,6 @@ tests:
     - -Wall
     dependencies:
     - range
+    - HUnit
     - test-framework
+    - test-framework-hunit
