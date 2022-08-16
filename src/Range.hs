@@ -2,8 +2,13 @@ module Range where
 
 data Endpoint a = Open a | Closed a deriving (Eq, Show)
 
-contains (Open x, Open y) candidate@(z:_) = x < z && last candidate < y
-contains (Open x, Closed y) candidate@(z:_) = x < z && last candidate <= y
-contains (Closed x, Open y) candidate@(z:_) = x <= z && last candidate < y
-contains (Closed x, Closed y) candidate@(z:_) = x <= z && last candidate <= y
-contains _ [] = True
+contains :: (Foldable t, Ord a) => (Endpoint a, Endpoint a) -> t a -> Bool
+contains endpoints candidate =
+  null candidate || (
+  let low = minimum candidate
+      hi  = maximum candidate
+  in case endpoints of
+      (Closed x, Closed y) -> x <= low && hi <= y
+      (Closed x,   Open y) -> x <= low && hi  < y
+      (  Open x, Closed y) -> x  < low && hi <= y
+      (  Open x,   Open y) -> x  < low && hi  < y)
