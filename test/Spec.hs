@@ -17,7 +17,8 @@ main = defaultMain $ hUnitTestToTests $ TestList [
         ((Closed (-1),   Open 10), [-1,1,6,10], False),
         ((Closed (-1),   Open 10),  [-1,1,6,9],  True),
         ((  Open   2,  Closed  6),     [3,5,6],  True),
-        ((  Open   2,    Open  6),       [2,5], False)
+        ((  Open   2,    Open  6),       [2,5], False),
+        ((  Open   2,    Open  6),          [],  True)
       ]
     let actual = r `contains` candidate
     return $ expected ~=? actual
