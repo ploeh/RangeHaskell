@@ -23,14 +23,14 @@ endpoints (  Open x, Closed y) = (x+1, y)
 endpoints (  Open x,   Open y) = (x+1, y-1)
 
 overlaps (l1, h1) (l2, h2) =
-  let isCandidateLower = case (h2, l1) of
-        (Closed x, Closed y) -> x <  y
-        (Closed x,   Open y) -> x <= y
-        (  Open x, Closed y) -> x <= y
-        (  Open x,   Open y) -> x <= y
-      isCandidateHigher = case (h1, l2) of
-        (Closed x, Closed y) -> x <  y
-        (Closed x,   Open y) -> x <= y
-        (  Open x, Closed y) -> x <= y
-        (  Open x,   Open y) -> x <= y
-  in not (isCandidateLower || isCandidateHigher)
+  let foo = case (l1, h2) of
+        (Closed x, Closed y) -> x <= y
+        (Closed x,   Open y) -> x <  y
+        (  Open x, Closed y) -> x <  y
+        (  Open x,   Open y) -> x <  y
+      bar = case (l2, h1) of
+        (Closed x, Closed y) -> x <= y
+        (Closed x,   Open y) -> x <  y
+        (  Open x, Closed y) -> x <  y
+        (  Open x,   Open y) -> x <  y
+  in foo && bar
