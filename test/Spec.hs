@@ -28,7 +28,8 @@ main = defaultMain $ hUnitTestToTests $ TestList [
     (r, expected) <-
       [
         ((Closed 2,   Open 6), [2,3,4,5]),
-        ((Closed 2, Closed 6), [2,3,4,5,6])
+        ((Closed 2, Closed 6), [2,3,4,5,6]),
+        ((  Open 2, Closed 6), [3,4,5,6])
       ]
     let actual = allPoints r
     return $ expected ~=? actual

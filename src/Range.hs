@@ -13,5 +13,6 @@ contains (lowerBound, upperBound) =
       isContained x = isHighEnough x && isLowEnough x
   in all isContained
 
-allPoints (_, Open _) = [2,3,4,5]
-allPoints _ = [2,3,4,5,6]
+allPoints (_, Open _) = [2..5]
+allPoints (Closed _, Closed _) = [2..6]
+allPoints _ = [3..6]
