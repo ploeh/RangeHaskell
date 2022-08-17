@@ -38,4 +38,16 @@ main = defaultMain $ hUnitTestToTests $ TestList [
       ]
     let actual = allPoints r
     return $ expected ~=? actual
+  ,
+  "ContainsRange" ~: do
+    (r, candidate, expected) <-
+      [
+        ((Closed 2,   Open  5), allPoints (Closed 7, Open   10), False),
+        ((Closed 2,   Open  5), allPoints (Closed 3, Open   10), False),
+        ((Closed 3,   Open  5), allPoints (Closed 2, Open   10), False),
+        ((Closed 2,   Open 10), allPoints (Closed 3, Closed  5),  True),
+        ((Closed 3, Closed  5), allPoints (Closed 3, Open    5),  True)
+      ]
+    let actual = r `contains` candidate
+    return $ expected ~=? actual
   ]
