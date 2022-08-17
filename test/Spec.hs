@@ -28,6 +28,7 @@ main = defaultMain $ hUnitTestToTests $ TestList [
     (r, expected) <-
       [
         ((Closed 2,   Open 6), [2..5]),
+        ((Closed 4,   Open 8), [4..7]),
         ((Closed 2, Closed 6), [2..6]),
         ((  Open 2, Closed 6), [3..6]),
         ((  Open 2,   Open 6), [3..5])
