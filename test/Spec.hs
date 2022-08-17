@@ -50,4 +50,12 @@ main = defaultMain $ hUnitTestToTests $ TestList [
       ]
     let actual = r `contains` candidate
     return $ expected ~=? actual
+  ,
+  "endPoints" ~: do
+    (r, expected) <-
+      [
+        ((Closed 2, Open 6), (2, 5))
+      ]
+    let actual = endpoints r
+    return $ expected ~=? actual
   ]
