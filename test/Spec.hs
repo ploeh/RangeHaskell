@@ -23,4 +23,12 @@ main = defaultMain $ hUnitTestToTests $ TestList [
       ]
     let actual = r `contains` candidate
     return $ expected ~=? actual
+  ,
+  "getAllPoints" ~: do
+    (r, expected) <-
+      [
+        ((Closed 2, Open 6), [2,3,4,5])
+      ]
+    let actual = allPoints r
+    return $ expected ~=? actual
   ]
