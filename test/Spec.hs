@@ -29,7 +29,8 @@ main = defaultMain $ hUnitTestToTests $ TestList [
       [
         ((Closed 2,   Open 6), [2..5]),
         ((Closed 2, Closed 6), [2..6]),
-        ((  Open 2, Closed 6), [3..6])
+        ((  Open 2, Closed 6), [3..6]),
+        ((  Open 2,   Open 6), [3..5])
       ]
     let actual = allPoints r
     return $ expected ~=? actual
