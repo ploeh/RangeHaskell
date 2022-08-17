@@ -21,3 +21,5 @@ endpoints (Closed x, Closed y) = (x  , y)
 endpoints (Closed x,   Open y) = (x  , y-1)
 endpoints (  Open x, Closed y) = (x+1, y)
 endpoints (  Open x,   Open y) = (x+1, y-1)
+
+overlaps _ _ = False
