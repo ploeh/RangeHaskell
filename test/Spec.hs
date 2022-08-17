@@ -60,7 +60,8 @@ main = defaultMain $ hUnitTestToTests $ TestList [
         ((Closed 1, Closed 7), (1, 7)),
         ((  Open 2,   Open 6), (3, 5)),
         ((  Open 1,   Open 7), (2, 6)),
-        ((  Open 2, Closed 6), (3, 6))
+        ((  Open 2, Closed 6), (3, 6)),
+        ((  Open 1, Closed 7), (2, 7))
       ]
     let actual = endpoints r
     return $ expected ~=? actual

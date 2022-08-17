@@ -22,4 +22,4 @@ allPoints (  Open x,   Open y) = [x+1..y-1]
 endpoints (Closed x, Open y) = (x, y-1)
 endpoints (Closed x, Closed y) = (x, y)
 endpoints (Open x, Open y) = (x+1, y-1)
-endpoints _ = (3, 6)
+endpoints (Open x, Closed y) = (x+1, y)
