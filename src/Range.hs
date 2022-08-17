@@ -22,5 +22,15 @@ endpoints (Closed x,   Open y) = (x  , y-1)
 endpoints (  Open x, Closed y) = (x+1, y)
 endpoints (  Open x,   Open y) = (x+1, y-1)
 
-overlaps (_, Open 5) (Closed 7, Open 10) = False
-overlaps _ _ = True
+overlaps (l1, h1) (l2, h2) =
+  let isCandidateLower = case (h2, l1) of
+        (Closed x, Closed y) -> x <  y
+        (Closed x,   Open y) -> x <= y
+        (  Open x, Closed y) -> x <= y
+        (  Open x,   Open y) -> x <= y
+      isCandidateHigher = case (h1, l2) of
+        (Closed x, Closed y) -> x <  y
+        (Closed x,   Open y) -> x <= y
+        (  Open x, Closed y) -> x <= y
+        (  Open x,   Open y) -> x <= y
+  in not (isCandidateLower || isCandidateHigher)
