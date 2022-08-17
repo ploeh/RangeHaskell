@@ -19,7 +19,8 @@ allPoints (Closed x,   Open y) = [x..y-1]
 allPoints (  Open x, Closed y) = [x+1..y]
 allPoints (  Open x,   Open y) = [x+1..y-1]
 
-endpoints (Closed x, Open y) = (x, y-1)
-endpoints (Closed x, Closed y) = (x, y)
-endpoints (Open x, Open y) = (x+1, y-1)
-endpoints (Open x, Closed y) = (x+1, y)
+endpoints :: (Num a1, Num a2) => (Endpoint a2, Endpoint a1) -> (a2, a1)
+endpoints (Closed x, Closed y) = (x  , y)
+endpoints (Closed x,   Open y) = (x  , y-1)
+endpoints (  Open x, Closed y) = (x+1, y)
+endpoints (  Open x,   Open y) = (x+1, y-1)
