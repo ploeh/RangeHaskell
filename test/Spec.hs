@@ -71,7 +71,8 @@ main = defaultMain $ hUnitTestToTests $ TestList [
       [
         ((Closed 2, Open 5), (Closed 7, Open 10), False),
         ((Closed 2, Open 10), (Closed 3, Open 5), True),
-        ((Closed 3, Open 5), (Closed 3, Open 5), True)
+        ((Closed 3, Open 5), (Closed 3, Open 5), True),
+        ((Closed 2, Open 5), (Closed 3, Open 10), True)
       ]
     let actual = r `overlaps` candidate
     return $ expected ~=? actual

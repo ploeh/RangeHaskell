@@ -22,5 +22,5 @@ endpoints (Closed x,   Open y) = (x  , y-1)
 endpoints (  Open x, Closed y) = (x+1, y)
 endpoints (  Open x,   Open y) = (x+1, y-1)
 
-overlaps (_, Open 5) (_, Open 10) = False
+overlaps (_, Open 5) (Closed 7, Open 10) = False
 overlaps _ _ = True
