@@ -19,7 +19,7 @@ allPoints (Closed x,   Open y) = [x..y-1]
 allPoints (  Open x, Closed y) = [x+1..y]
 allPoints (  Open x,   Open y) = [x+1..y-1]
 
-endpoints (Closed _, Open _) = (2, 5)
+endpoints (Closed x, Open y) = (x, y-1)
 endpoints (Closed _, _) = (2, 6)
 endpoints (Open _, Open _) = (3, 5)
 endpoints _ = (3, 6)
