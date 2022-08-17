@@ -14,10 +14,9 @@ contains (lowerBound, upperBound) =
   in all isContained
 
 allPoints :: (Enum a, Num a) => (Endpoint a, Endpoint a) -> [a]
-allPoints (Closed x, Closed y) = [x..y]
-allPoints (Closed x,   Open y) = [x..y-1]
-allPoints (  Open x, Closed y) = [x+1..y]
-allPoints (  Open x,   Open y) = [x+1..y-1]
+allPoints r =
+  let (x, y) = endpoints r
+  in [x..y]
 
 endpoints :: (Num a1, Num a2) => (Endpoint a2, Endpoint a1) -> (a2, a1)
 endpoints (Closed x, Closed y) = (x  , y)
