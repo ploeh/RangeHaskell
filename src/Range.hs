@@ -15,5 +15,5 @@ contains (lowerBound, upperBound) =
 
 allPoints (Closed x, Open y) = [x..y-1]
 allPoints (Closed x, Closed y) = [x..y]
-allPoints (Open _, Closed _) = [3..6]
+allPoints (Open x, Closed y) = [x+1..y]
 allPoints _ = [3..5]

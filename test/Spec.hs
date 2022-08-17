@@ -32,6 +32,7 @@ main = defaultMain $ hUnitTestToTests $ TestList [
         ((Closed 2, Closed 6), [2..6]),
         ((Closed 4, Closed 8), [4..8]),
         ((  Open 2, Closed 6), [3..6]),
+        ((  Open 4, Closed 8), [5..8]),
         ((  Open 2,   Open 6), [3..5])
       ]
     let actual = allPoints r
