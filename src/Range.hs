@@ -22,15 +22,11 @@ endpoints (Closed x,   Open y) = (x  , y-1)
 endpoints (  Open x, Closed y) = (x+1, y)
 endpoints (  Open x,   Open y) = (x+1, y-1)
 
+overlaps :: (Ord a1, Ord a2) =>
+            (Endpoint a1, Endpoint a2) -> (Endpoint a2, Endpoint a1) -> Bool
 overlaps (l1, h1) (l2, h2) =
-  let foo = case (l1, h2) of
-        (Closed x, Closed y) -> x <= y
-        (Closed x,   Open y) -> x <  y
-        (  Open x, Closed y) -> x <  y
-        (  Open x,   Open y) -> x <  y
-      bar = case (l2, h1) of
-        (Closed x, Closed y) -> x <= y
-        (Closed x,   Open y) -> x <  y
-        (  Open x, Closed y) -> x <  y
-        (  Open x,   Open y) -> x <  y
-  in foo && bar
+  let less (Closed x) (Closed y) = x <= y
+      less (Closed x)   (Open y) = x <  y
+      less   (Open x) (Closed y) = x <  y
+      less   (Open x)   (Open y) = x <  y
+  in l1 `less` h2 && l2 `less` h1
