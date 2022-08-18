@@ -69,14 +69,25 @@ main = defaultMain $ hUnitTestToTests $ TestList [
   "overlapsRange" ~: do
     (r, candidate, expected) <-
       [
-        ((Closed 2, Open 5), (Closed 7, Open 10), False),
-        ((Closed 2, Open 10), (Closed 3, Open 5), True),
-        ((Closed 3, Open 5), (Closed 3, Open 5), True),
-        ((Closed 2, Open 5), (Closed 3, Open 10), True),
-        ((Closed 3, Open 5), (Closed 2, Open 10), True),
-        ((Closed 3, Open 5), (Closed 1, Open 3), False),
-        ((Closed 3, Open 5), (Closed 5, Open 7), False)
+        ((Closed 2, Open  5), (Closed 7, Open 10), False),
+        ((Closed 2, Open 10), (Closed 3, Open  5),  True),
+        ((Closed 3, Open  5), (Closed 3, Open  5),  True),
+        ((Closed 2, Open  5), (Closed 3, Open 10),  True),
+        ((Closed 3, Open  5), (Closed 2, Open 10),  True),
+        ((Closed 3, Open  5), (Closed 1, Open  3), False),
+        ((Closed 3, Open  5), (Closed 5, Open  7), False)
       ]
     let actual = r `overlaps` candidate
+    return $ expected ~=? actual
+  ,
+  "Equals" ~: do
+    (x, y, expected) <-
+      [
+        ((Closed 3, Open  5), (Closed 3, Open  5),  True),
+        ((Closed 2, Open 10), (Closed 3, Open  5), False),
+        ((Closed 2, Open  5), (Closed 3, Open 10), False),
+        ((Closed 3, Open  5), (Closed 2, Open 10), False)
+      ]
+    let actual = x == y
     return $ expected ~=? actual
   ]
