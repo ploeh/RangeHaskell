@@ -1,6 +1,7 @@
+{-# LANGUAGE DeriveFunctor #-}
 module Range where
 
-data Endpoint a = Open a | Closed a deriving (Eq, Show)
+data Endpoint a = Open a | Closed a deriving (Eq, Show, Functor)
 
 contains :: (Foldable t, Ord a) => (Endpoint a, Endpoint a) -> t a -> Bool
 contains (lowerBound, upperBound) =
