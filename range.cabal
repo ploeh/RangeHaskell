@@ -3,15 +3,14 @@ version:             0.1.0.0
 -- synopsis:
 -- description:
 homepage:            https://github.com/githubuser/range#readme
-license:             BSD3
-license-file:        LICENSE
+license:             GPL-3.0-or-later
+license-file:        COPYING
 author:              Author name here
 maintainer:          example@example.com
 copyright:           2022 Author name here
 category:            Web
 build-type:          Simple
 extra-source-files:  README.md
-                     CHANGELOG.md
 cabal-version:       >=1.10
 
 library
