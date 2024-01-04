@@ -1,7 +1,13 @@
 {-# LANGUAGE DeriveFunctor #-}
 module Range where
 
+import Data.Functor.Classes (showsUnaryWith, Show1(liftShowsPrec))
+
 data Endpoint a = Open a | Closed a deriving (Eq, Show, Functor)
+
+instance Show1 Endpoint where
+  liftShowsPrec sp _ d   (Open x) = showsUnaryWith sp   "Open" d x
+  liftShowsPrec sp _ d (Closed x) = showsUnaryWith sp "Closed" d x
 
 contains :: (Foldable t, Ord a) => (Endpoint a, Endpoint a) -> t a -> Bool
 contains (lowerBound, upperBound) =
